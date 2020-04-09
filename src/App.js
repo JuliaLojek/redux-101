@@ -8,13 +8,11 @@ import EnterValue from './components/EnterValue';
 import EnterTodo from './components/EnterTodo';
 import Home from './components/Home';
 import { connect } from 'react-redux';
-import { SET_FETCHED_TODOS } from './modules/todos/todos.actions';
+import { FETCH_INIT_TODOS } from './modules/todos/todos.actions';
 
 class App extends Component {
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then(response => response.json())
-      .then(json => this.props.actionSetFetchedTodos(json))
+    this.props.actionFetchTodos();
   }
 
   render() {
@@ -35,7 +33,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  actionSetFetchedTodos: (actionParam) => dispatch(SET_FETCHED_TODOS(actionParam))
+  actionFetchTodos: () => dispatch(FETCH_INIT_TODOS())
 });
 
 export default connect(null, mapDispatchToProps)(App);

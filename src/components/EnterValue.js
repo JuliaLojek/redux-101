@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ACTION_CHANGE_COUNTER } from '../modules/counter/counter.actions';
 import { selectCounterValue } from '../modules/counter/counter.selectors';
