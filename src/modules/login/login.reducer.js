@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   isLoggedIn: false,
   email: "",
   isLoading: false,
-  isError: false
+  isError: false,
+  token: ""
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -15,7 +16,8 @@ export default (state = INITIAL_STATE, action) => {
         isLoggedIn: true,
         email: action.value,
         isLoading: false,
-        isError: false
+        isError: false,
+        token: action.token
       };
     case LOGIN_ACTION_TYPES.LOG_OUT:
       return state = {
@@ -23,7 +25,8 @@ export default (state = INITIAL_STATE, action) => {
         isLoggedIn: false,
         email: "",
         isLoading: false,
-        isError: false
+        isError: false,
+        token: ""
       };
     case LOGIN_ACTION_TYPES.SET_ERROR_LOGIN:
       return state = {
@@ -31,7 +34,8 @@ export default (state = INITIAL_STATE, action) => {
         isLoggedIn: false,
         email: "",
         isLoading: false,
-        isError: true
+        isError: true,
+        token: ""
       };
     case LOGIN_ACTION_TYPES.SET_LOADING_LOGIN:
       return state = {
@@ -39,7 +43,8 @@ export default (state = INITIAL_STATE, action) => {
         isLoggedIn: false,
         email: "",
         isLoading: true,
-        isError: false
+        isError: false,
+        token: ""
       };
     default:
       return state;

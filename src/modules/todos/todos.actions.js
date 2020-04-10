@@ -23,9 +23,15 @@ export const TOGGLE_TODO = (todo) => {
 
 export const FETCH_INIT_TODOS = () => {
   return dispatch => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    return fetch("https://jsonplaceholder.typicode.com/todos")
       .then(response => response.json())
-      .then(todos => dispatch(SET_FETCHED_TODOS(todos)))
+      .then(todos => {
+        if (todos.length > 0) {
+          return dispatch(SET_FETCHED_TODOS(todos));
+        } else {
+          return dispatch(SET_ERROR_TODOS());
+        }
+      })
       .catch(error => dispatch(SET_ERROR_TODOS()))
   }
 };

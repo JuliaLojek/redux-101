@@ -7,10 +7,11 @@ export const LOGIN_ACTION_TYPES = {
   SET_ERROR_LOGIN: "SET_ERROR_LOGIN"
 };
 
-export const LOG_IN = (email) => {
+export const LOG_IN = (email, token) => {
   return {
     type: LOGIN_ACTION_TYPES.LOG_IN,
     value: email,
+    token: token
   };
 };
 
@@ -36,7 +37,7 @@ export const FETCH_USER_DATA = (email, password) => {
         if (Object.keys(data).includes("error")) {
           dispatch(SET_ERROR_LOGIN());
         } else {
-          dispatch(LOG_IN(email));
+          dispatch(LOG_IN(email, data.token));
         }
       })
       .catch(error => dispatch(SET_ERROR_LOGIN()))

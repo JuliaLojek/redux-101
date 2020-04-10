@@ -32,6 +32,12 @@ class LogInForm extends Component {
           <br />
           <button type="submit">ok</button>
         </form>
+        {this.props.user.isLoading
+          ?
+          <p>Give me a moment, I'm logging you in...</p>
+          :
+          null
+        }
         {this.props.user.isError
           ?
           <p>your email or password is incorrect, try again</p>
